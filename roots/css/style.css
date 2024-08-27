@@ -1,7 +1,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
-
+/*----------- inicio navbar ----------- */
 
 .navbar {
     display: flex;
@@ -47,7 +47,10 @@ li a {
     color: #3126FF;
     font-weight: 500;
 }
+/*----------- fim navbar ----------- */
 
+
+/* ----------- comeco primeira section -----------*/
 #first-container {
     background-color: #FAF3C4;
     width: 90rem;
@@ -102,9 +105,37 @@ li a {
     width: 31rem;
     height: 31rem;
 }
+/* ----------- fim primeira section -----------*/
+#second-container {
+    background-color: #121210;
+    color: #fff;
+    padding: 40px 20px;
+    height: 30rem;
+    text-align: center;
+}
+
+#second-container .steps {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%; /* Garante que os passos ocupem toda a altura do contêiner */
+}
+
+#second-container .step {
+    max-width: 150px;
+    display: flex;
+    flex-direction: column; /* Empilha o conteúdo verticalmente */
+    justify-content: center; /* Alinha verticalmente ao centro */
+    align-items: center; /* Alinha horizontalmente ao centro */
+    text-align: center; /* Centraliza o texto dentro de cada passo */
+}
 
 
-/* Responsividade */
+#cor-funciona {
+    color: #88B3F9;
+}
+
+/* ----------- Responsividade -----------*/
 @media (max-width: 768px) {
     .nav-links {
         display: none;
