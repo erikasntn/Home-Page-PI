@@ -15,10 +15,19 @@
 }
 
 .nav-links {
+    margin-top: 0.5rem;
     display: flex;
+    flex-direction: row;
+    margin-left: auto; /* Move os itens para a direita */
     justify-content: center;
-    gap: 5rem; /* Espaçamento entre os links */
-    flex-grow: 1;
+}
+
+.nav-links li {
+    margin-left: 5rem; /* Adiciona espaço à esquerda de cada item da lista */
+}
+
+.nav-links li:last-child {
+    margin-right: 0; /* Remove o espaçamento do último item */
 }
 nav button{
     width: 8rem;
@@ -28,19 +37,29 @@ nav button{
     font-weight: 600;
     border: none;
     border-radius: 0.5rem;
+    margin-left: 25rem;
+}
+
+nav button:hover{
+    background-image: linear-gradient(to right, #3126FF 0%, #0a065f 51%, #3126FF 100%);
+    transition: background-position 1.5s;
+    background-size: 200% auto;
 }
 ul {
     list-style: none;
     display: flex;
     justify-content: center;
     align-items: center;
+
 }
 
 li a {
+    
     text-decoration: none;
     font-weight: 500;
     font-family: 'Inter', sans-serif;
     color: black;
+    
 }
 
 #QuemSomos, #first-container span {
@@ -53,7 +72,7 @@ li a {
 /* ----------- comeco primeira section -----------*/
 #first-container {
     background-color: #FAF3C4;
-    width: 90rem;
+    width: 100rem;
     max-width: 100%;
     height: 36.25rem;
     display: flex;
@@ -172,8 +191,6 @@ li a {
     color: #3126FF;
 }
 
-
-
 #fourth-container {
     color: orange;
     padding: 40px 20px;
@@ -185,6 +202,8 @@ li a {
 #fourth-container h1 {
     text-align: left;
     color: #3126FF;
+    margin-left: 5rem;
+    font-weight: 600;
 }
 
 #fourth-container .imgs-logo {
@@ -193,19 +212,44 @@ li a {
     align-items: center;
 }
 
-#fourth-container .img-logo {
-    margin-top: 5rem;
-    max-width: 150px;
-    display: flex;
-    justify-content: center; /* Centraliza a imagem horizontalmente */
-    align-items: center; /* Centraliza a imagem verticalmente */
+#fourth-container  .img-logo img {
+    margin-top: 5rem; 
+    max-width: 100%; /* Faz com que a imagem se ajuste ao contêiner */
+    height: auto; /* Mantém a proporção da imagem */
 }
 
-#fourth-container img {
-    max-width: 100%;
-    height: auto;
+#fourth-container  .img-logo p {
+    color: #3126FF;
+    font-weight: 700;
+    font-size: 1.5rem;
+    white-space: nowrap; /* Evita que o texto quebre em várias linhas */
+    margin: 0; /* Remove margens padrão */
 }
 
+#fourth-container  .img-logo h3 {
+    color: #3126FF;
+    font-weight: 700;
+    margin: 0; /* Remove margens padrão */
+}
+
+.footer {
+    background-color: #333; /* Cor de fundo do footer */
+    color: #fff; /* Cor do texto */
+    padding: 20px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.footer span {
+    margin: 0; /* Remove a margem padrão do parágrafo */
+}
+   /* Estilo para os contadores */
+   .counter {
+    font-size: 2rem; /* Ajuste o tamanho da fonte conforme necessário */
+    font-weight: bold;
+    transition: all 1s ease-out;
+  }
+  
 /* ----------- Responsividade -----------*/
 @media (max-width: 768px) {
     .nav-links {

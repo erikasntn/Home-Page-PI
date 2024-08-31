@@ -1,29 +1,44 @@
-let currentSlide = 0;
 
-function showSlide(index) {
-    const slides = document.querySelectorAll('.carousel-item');
-    const totalSlides = slides.length;
+document.addEventListener('DOMContentLoaded', function() {
+  const counters = document.querySelectorAll('.counter');
+  let hasAnimated = false; // Flag para garantir que a animação aconteça apenas uma vez
 
-    if (index >= totalSlides) {
-        currentSlide = 0;
-    } else if (index < 0) {
-        currentSlide = totalSlides - 1;
-    } else {
-        currentSlide = index;
-    }
+  // Função para animar os contadores
+  const animateCounters = () => {
+    counters.forEach(counter => {
+      const target = +counter.getAttribute('data-target');
+      let count = 0;
+      const velocidadeContador = target / 100; //velocidade do contador
+      const formatNumber = num => num.toLocaleString('pt-BR');
 
-    const offset = -currentSlide * 100 / 3; // 3 itens por slide
-    const carouselInner = document.querySelector('.carousel-inner');
-    carouselInner.style.transform = `translateX(${offset}%)`;
-}
+      const updateCount = () => {
+        count = Math.min(count + velocidadeContador, target);
+        counter.innerText = `+${formatNumber(Math.floor(count))}`;
+        if (count < target) {
+          setTimeout(updateCount, 10);
+        } else {
+          counter.innerText = `+${formatNumber(target)}`;
+        }
+      };
 
-function nextSlide() {
-    showSlide(currentSlide + 1);
-}
+      updateCount();
+    });
+  };
 
-function prevSlide() {
-    showSlide(currentSlide - 1);
-}
+  // Configuração do IntersectionObserver
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !hasAnimated) {
+        // Inicia a animação apenas quando a seção entra na viewport
+        animateCounters();
+        hasAnimated = true; // Marca a animação como já realizada
+        observer.disconnect(); // Desconecta o observer após a animação iniciar
+      }
+    });
+  }, {
+    threshold: 0.5 // A seção deve estar pelo menos 50% visível para iniciar a animação
+  });
 
-// Inicializa o carrossel
-showSlide(currentSlide);
+  observer.observe(document.querySelector('#fourth-container'));
+});
+
